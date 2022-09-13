@@ -36,10 +36,10 @@ export default {
 }
 
 .product-item {
-  width: 300px;
+  width: 20vw;
   text-align: center;
-  margin: 10px;
-  border-radius: 40px;
+  margin-bottom: 20px;
+  border-radius: 30px;
   border-bottom: 2px solid #F5F5F5;
   background: white;
   // font-family: "Open Sans";

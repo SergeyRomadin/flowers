@@ -13,6 +13,7 @@
       <h3>Как нас найти?</h3>
       <span>г.Донецк, Проспект Богдана Хмельницкого, д. 93</span>
       <span><a href="tel:+70713650543">+7(071)-365-05-43</a> Viber, WhatsApp</span>
+      <span><a href="https://t.me/nikaflowersdn">Telegram NikaFlowers</a></span>
     </div>
   </div>
 
@@ -35,14 +36,21 @@ export default {
   // .map__yandex
 
   &__yandex {
-    height: 50vh;
+    max-width: 50%;
     width: 50vw;
+    height: 50vh;
+    max-height: 425px;
 
-    a {}
+
+
+    a {
+      padding-left: 10px;
+    }
 
     iframe {
       width: 100%;
       height: 100%;
+      border-radius: 30px;
     }
   }
 
@@ -51,6 +59,12 @@ export default {
   &__contacts {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    margin-left: 40px;
+
+    a {
+      font-weight: bold;
+    }
   }
 }
 </style>

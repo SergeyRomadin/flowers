@@ -53,13 +53,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
-  list-style: none;
-}
-
 .product-items {
+  list-style: none;
+  padding: 0;
+
   display: flex;
   // justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 </style>

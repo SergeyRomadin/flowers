@@ -3,8 +3,8 @@
   <div class="product-item">
     <img :src="img">
     <div class=" product-list">
-      <h3>Маленькое черное платье</h3>
-      <span class="price">₽ 1999</span>
+      <h3>{{ this.name }}</h3>
+      <span class="price">{{ this.coast }} ₽</span>
       <a href="" class="button">В корзину</a>
     </div>
   </div>
@@ -13,22 +13,24 @@
 
 <script>
 
-  export default {
-    props : {
-      img: String
-    },
-    // data() {
-    //   return {
-    //     adada : this.img
-    //   }
-    // }
+export default {
+  props: {
+    img: String,
+    name: String,
+    coast: Number,
+  },
+  // data() {
+  //   return {
+  //     adada : this.img
+  //   }
+  // }
 
-    
 
-  }
+
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   box-sizing: border-box;
 }
@@ -36,20 +38,23 @@
 .product-item {
   width: 300px;
   text-align: center;
-  margin: 0 auto;
+  margin: 10px;
+  border-radius: 40px;
   border-bottom: 2px solid #F5F5F5;
   background: white;
-  font-family: "Open Sans";
+  // font-family: "Open Sans";
   transition: .3s ease-in;
+  overflow: hidden;
 }
 
 .product-item:hover {
-  border-bottom: 2px solid #fc5a5a;
+  border-bottom: 2px solid #593B59;
 }
 
 .product-item img {
   display: block;
   width: 100%;
+
 }
 
 .product-list {
@@ -66,7 +71,7 @@
 
 .price {
   font-size: 16px;
-  color: #fc5a5a;
+  color: #593B59;
   display: block;
   margin-bottom: 12px;
 }
@@ -84,6 +89,6 @@
 }
 
 .product-item:hover .button {
-  background: #fc5a5a;
+  background: #593B59;
 }
 </style>

@@ -4,7 +4,12 @@
     <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
-      <a href="" class="button">В корзину</a>
+      <a href="" class="button" @click="$store.commit('addToBasket', this.id)"
+        >В корзину</a
+      >
+      <button class="button" @click="$store.commit('addToBasket', this.id)">
+        В корзину
+      </button>
     </div>
   </div>
 </template>
@@ -14,13 +19,12 @@ export default {
   props: {
     img: String,
     name: String,
-    coast: Number,
+    coast: String,
+    id: String,
   },
-  // data() {
-  //   return {
-  //     adada : this.img
-  //   }
-  // }
+  data() {
+    return {};
+  },
 };
 </script>
 
@@ -37,7 +41,6 @@ export default {
 
   border-bottom: 2px solid #f5f5f5;
   background: white;
-  // font-family: "Open Sans";
   transition: 0.3s ease-in;
   overflow: hidden;
 }
@@ -45,7 +48,7 @@ export default {
   display: block;
   width: 100%;
   min-height: 150px;
-  height: 20vw;
+  height: 18vw;
 }
 
 .product-list {
@@ -83,7 +86,7 @@ export default {
   transform: scale(1.02);
   transform: translateY(-8px);
   border-bottom: 2px solid #593b59;
-  box-shadow: 0 0 10px #444444;
+  box-shadow: 0 0 10px #442d3f;
   // border-radius: 30px;
   .button {
     background: #593b59;

@@ -1,21 +1,23 @@
 <template>
-  <header>
-    <p>Header</p>
-  </header>
-  <div class="_container">
-    <ProductItems />
-    <Map />
+  <div class="app">
+    <Header></Header>
+    <div class="_container">
+      <ProductItems />
+      <Map />
+    </div>
   </div>
 </template>
 
 <script>
 import ProductItems from "./components/ProductItems.vue";
 import Map from "./components/Map.vue";
+import Header from "./components/Header.vue";
 
 export default {
   components: {
     ProductItems,
     Map,
+    Header,
   },
 };
 </script>
@@ -38,6 +40,8 @@ body {
   background-color: #fafafa;
   color: #593b59;
   font-family: "Amatic SC", cursive;
+  padding: 0;
+  margin: 0;
 }
 
 a {

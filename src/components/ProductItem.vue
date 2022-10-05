@@ -1,18 +1,15 @@
 <template>
-
   <div class="product-item">
-    <img :src="img">
-    <div class=" product-list">
+    <img :src="img" />
+    <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
       <a href="" class="button">В корзину</a>
     </div>
   </div>
-
 </template>
 
 <script>
-
 export default {
   props: {
     img: String,
@@ -24,10 +21,7 @@ export default {
   //     adada : this.img
   //   }
   // }
-
-
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -36,29 +30,26 @@ export default {
 }
 
 .product-item {
-  width: 20vw;
+  min-width: 100px;
+  width: 15vw;
   text-align: center;
   margin-bottom: 20px;
-  border-radius: 30px;
-  border-bottom: 2px solid #F5F5F5;
+
+  border-bottom: 2px solid #f5f5f5;
   background: white;
   // font-family: "Open Sans";
-  transition: .3s ease-in;
+  transition: 0.3s ease-in;
   overflow: hidden;
 }
-
-.product-item:hover {
-  border-bottom: 2px solid #593B59;
-}
-
 .product-item img {
   display: block;
   width: 100%;
-
+  min-height: 150px;
+  height: 20vw;
 }
 
 .product-list {
-  background: #fafafa;
+  background: #ffffff;
   padding: 15px 0;
 }
 
@@ -71,7 +62,7 @@ export default {
 
 .price {
   font-size: 16px;
-  color: #593B59;
+  color: #593b59;
   display: block;
   margin-bottom: 12px;
 }
@@ -85,10 +76,17 @@ export default {
   text-transform: uppercase;
   font-size: 12px;
   line-height: 28px;
-  transition: .3s ease-in;
+  transition: 0.3s ease-in;
 }
 
-.product-item:hover .button {
-  background: #593B59;
+.product-item:hover {
+  transform: scale(1.02);
+  transform: translateY(-8px);
+  border-bottom: 2px solid #593b59;
+  box-shadow: 0 0 10px #444444;
+  // border-radius: 30px;
+  .button {
+    background: #593b59;
+  }
 }
 </style>

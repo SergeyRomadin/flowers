@@ -4,9 +4,9 @@
     <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
-      <a href="" class="button" @click="$store.commit('addToBasket', this.id)"
+      <!-- <a href="" class="button" @click="$store.commit('addToBasket', this.id)"
         >В корзину</a
-      >
+      > -->
       <button class="button" @click="$store.commit('addToBasket', this.id)">
         В корзину
       </button>
@@ -80,6 +80,7 @@ export default {
   font-size: 12px;
   line-height: 28px;
   transition: 0.3s ease-in;
+  border: none;
 }
 
 .product-item:hover {

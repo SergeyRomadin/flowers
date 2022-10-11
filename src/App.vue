@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <Header></Header>
+    <Cart />
     <div class="_container">
       <ProductItems />
       <Map />
@@ -12,12 +13,14 @@
 import ProductItems from "./components/ProductItems.vue";
 import Map from "./components/Map.vue";
 import Header from "./components/Header.vue";
+import Cart from "./components/Cart.vue";
 
 export default {
   components: {
     ProductItems,
     Map,
     Header,
+    Cart,
   },
 };
 </script>

@@ -7,7 +7,9 @@
       <!-- <a href="" class="button" @click="$store.commit('addToCart', this.id)"
         >В корзину</a
       > -->
-      <button class="button" @click="this.addToCart(this.id)">В корзину</button>
+      <button class="button" @click="this.removeFromCart(this.id)">
+        Удалить
+      </button>
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@ export default {
     return {};
   },
   methods: {
-    ...mapMutations(["addToCart"]),
+    ...mapMutations(["removeFromCart"]),
   },
   computed: {},
 };
@@ -37,8 +39,13 @@ export default {
 }
 
 .product-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
   min-width: 100px;
-  width: 15vw;
+  width: 50vw;
   text-align: center;
   margin-bottom: 20px;
 
@@ -46,17 +53,30 @@ export default {
   background: white;
   transition: 0.3s ease-in;
   overflow: hidden;
+
+  @media (max-width: 500px) {
+    justify-content: center;
+
+    min-width: 100px;
+  }
 }
 .product-item img {
   display: block;
-  width: 100%;
+  width: 15vw;
+  min-width: 100px;
   min-height: 140px;
   height: 18vw;
+  @media (max-width: 500px) {
+    justify-content: center;
+
+    width: 50vw;
+    height: 65vw;
+  }
 }
 
 .product-list {
   background: #ffffff;
-  padding: 15px 0;
+  padding: 15px 20px;
 }
 
 .product-list h3 {

@@ -40,14 +40,21 @@ export default createStore({
         id: 6,
       },
     ],
-    basketItems: [],
+    cartItems: [],
   },
   getters: {},
   mutations: {
-    addToBasket(state, id) {
+    addToCart(state, id) {
       state.itemsData.forEach((el) => {
         if (el.id == id) {
-          state.basketItems.push(el);
+          state.cartItems.push(el);
+        }
+      });
+    },
+    removeFromCart(state, id) {
+      state.cartItems.forEach((el, index) => {
+        if (el.id == id) {
+          state.cartItems.splice(index, 1);
         }
       });
     },

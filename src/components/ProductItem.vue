@@ -4,10 +4,10 @@
     <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
-      <!-- <a href="" class="button" @click="$store.commit('addToCart', this.id)"
-        >В корзину</a
-      > -->
-      <button class="button" @click="this.addToCart(this.id)">В корзину</button>
+      <input v-model="amount" type="number" min="1" max="100" />
+      <button class="button" @click="this.addToCart([this.id, this.amount])">
+        В корзину
+      </button>
     </div>
   </div>
 </template>
@@ -22,7 +22,9 @@ export default {
     id: Number,
   },
   data() {
-    return {};
+    return {
+      amount: 1,
+    };
   },
   methods: {
     ...mapMutations(["addToCart"]),
@@ -57,6 +59,11 @@ export default {
 .product-list {
   background: #ffffff;
   padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: column;
 }
 
 .product-list h3 {
@@ -68,7 +75,7 @@ export default {
 
 .price {
   font-size: 16px;
-  color: #593b59;
+  color: #50966f;
   display: block;
   margin-bottom: 12px;
 }
@@ -84,6 +91,8 @@ export default {
   line-height: 28px;
   transition: 0.3s ease-in;
   border: none;
+  margin: 5px;
+  white-space: nowrap;
 }
 
 .product-item:hover {

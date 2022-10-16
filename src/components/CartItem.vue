@@ -4,9 +4,19 @@
     <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
-      <!-- <a href="" class="button" @click="$store.commit('addToCart', this.id)"
-        >В корзину</a
-      > -->
+      <input
+        v-model="amount"
+        @change="
+          (e) => {
+            return e.target.value == 0
+              ? this.removeFromCart(this.id)
+              : changeAmountItems([this.id, e.target.value]);
+          }
+        "
+        type="number"
+        min="0"
+        max="100"
+      />
       <button class="button" @click="this.removeFromCart(this.id)">
         Удалить
       </button>
@@ -22,12 +32,13 @@ export default {
     name: String,
     coast: Number,
     id: Number,
+    amount: Number,
   },
   data() {
     return {};
   },
   methods: {
-    ...mapMutations(["removeFromCart"]),
+    ...mapMutations(["removeFromCart", "changeAmountItems"]),
   },
   computed: {},
 };
@@ -49,7 +60,6 @@ export default {
   text-align: center;
   margin-bottom: 20px;
 
-  border-bottom: 2px solid #f5f5f5;
   background: white;
   transition: 0.3s ease-in;
   overflow: hidden;
@@ -76,7 +86,12 @@ export default {
 
 .product-list {
   background: #ffffff;
-  padding: 15px 20px;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
 }
 
 .product-list h3 {
@@ -88,7 +103,7 @@ export default {
 
 .price {
   font-size: 16px;
-  color: #593b59;
+  color: #50966f;
   display: block;
   margin-bottom: 12px;
 }
@@ -104,13 +119,12 @@ export default {
   line-height: 28px;
   transition: 0.3s ease-in;
   border: none;
+  margin: 5px;
 }
 
 .product-item:hover {
   transform: scale(1.02);
-  transform: translateY(-8px);
-  border-bottom: 2px solid #593b59;
-  box-shadow: 0 0 10px #442d3f;
+  box-shadow: 1px 1px 10px #b899b1;
   // border-radius: 30px;
   .button {
     background: #593b59;

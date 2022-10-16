@@ -1,11 +1,12 @@
 <template>
   <div class="app">
-    <Header></Header>
-    <Cart />
+    <Header @showCartModal="showModalCart = 1" />
+    <Cart v-if="showModalCart" @closeModal="showModalCart = 0" />
     <div class="_container">
       <ProductItems />
       <Map />
     </div>
+    <Cart v-if="showModalCart" />
   </div>
 </template>
 
@@ -16,6 +17,11 @@ import Header from "./components/Header.vue";
 import Cart from "./components/Cart.vue";
 
 export default {
+  data() {
+    return {
+      showModalCart: 0,
+    };
+  },
   components: {
     ProductItems,
     Map,

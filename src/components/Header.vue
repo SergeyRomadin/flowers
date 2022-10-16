@@ -1,14 +1,29 @@
 <template>
   <div class="header">
-    <span>Главная</span>
-    <span>Контакты</span>
-    <span>Телефон: +79998887766</span>
-    <span>Корзина</span>
+    <a>Главная</a>
+    <a>Контакты</a>
+    <a>Телефон: +79998887766</a>
+    <a @click="showCartModal">Корзина{{ this.totalCoast }}</a>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["getTotalCoast"]),
+    totalCoast() {
+      if (this.getTotalCoast) {
+        return "(" + this.getTotalCoast + "₽)";
+      }
+    },
+  },
+  methods: {
+    showCartModal() {
+      return this.$emit("showCartModal");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -28,5 +43,15 @@ export default {};
   position: fixed;
 
   top: 0;
+  z-index: 10;
+
+  a {
+    cursor: pointer;
+    color: #dfdede;
+
+    &:hover {
+      color: #442d3f;
+    }
+  }
 }
 </style>

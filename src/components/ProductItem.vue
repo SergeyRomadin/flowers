@@ -4,7 +4,8 @@
     <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
-      <input v-model="amount" type="number" min="1" max="100" />
+      <div><input v-model="amount" type="number" min="1" max="100" />шт.</div>
+
       <button class="button" @click="this.addToCart([this.id, this.amount])">
         В корзину
       </button>
@@ -103,6 +104,19 @@ export default {
   // border-radius: 30px;
   .button {
     background: #593b59;
+  }
+}
+
+input {
+  width: 40%;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid;
+  background-color: rgba($color: white, $alpha: 0);
+  &:focus {
+    outline: 1px solid #50966f;
+    border: none;
+    box-shadow: 0 0 10px #50966f;
   }
 }
 </style>

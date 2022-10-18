@@ -4,19 +4,23 @@
     <div class="product-list">
       <h3>{{ this.name }}</h3>
       <span class="price">{{ this.coast }} ₽</span>
-      <input
-        v-model="amount"
-        @change="
-          (e) => {
-            return e.target.value == 0
-              ? this.removeFromCart(this.id)
-              : changeAmountItems([this.id, e.target.value]);
-          }
-        "
-        type="number"
-        min="0"
-        max="100"
-      />
+
+      <div>
+        <input
+          v-model="amount"
+          @change="
+            (e) => {
+              return e.target.value == 0
+                ? this.removeFromCart(this.id)
+                : changeAmountItems([this.id, e.target.value]);
+            }
+          "
+          type="number"
+          min="0"
+          max="100"
+        />
+        шт.
+      </div>
       <button class="button" @click="this.removeFromCart(this.id)">
         Удалить
       </button>
@@ -120,6 +124,19 @@ export default {
   transition: 0.3s ease-in;
   border: none;
   margin: 5px;
+}
+
+input {
+  width: 40%;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid;
+  background-color: rgba($color: white, $alpha: 0);
+  &:focus {
+    outline: 1px solid #50966f;
+    border: none;
+    box-shadow: 0 0 10px #50966f;
+  }
 }
 
 .product-item:hover {

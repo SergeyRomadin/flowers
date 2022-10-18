@@ -1,5 +1,7 @@
 # flowers
 
+![Иллюстрация к поекту](https://github.com/SergeyRomadin/flowers/raw/master/FlowersTmpl.png)
+
 ## Project setup
 
 ```

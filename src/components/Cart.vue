@@ -1,32 +1,34 @@
 <template>
-  <div class="cart" @click.self="closeModal">
-    <ul class="cart-items">
-      <li v-for="item of this.cartItems">
-        <CartItem
-          :img="item.img"
-          :name="item.name"
-          :coast="item.totalCoast"
-          :id="item.id"
-          :amount="item.amount"
-        />
-      </li>
-      <li>
-        <div class="cart-order">
-          <a class="button">Оформить заказ</a>
-          И того: {{ this.getTotalCoast + "₽" }}
-        </div>
-      </li>
-    </ul>
+  <div v-if="this.cartItems.length > 0" class="cart" @click.self="closeModal">
+    <div class="cart__wrapper">
+      <ul class="cart-items">
+        <li v-for="item of this.cartItems">
+          <CartItem
+            :img="item.img"
+            :name="item.name"
+            :coast="item.totalCoast"
+            :id="item.id"
+            :amount="item.amount"
+          />
+        </li>
+        <li>
+          <div class="cart-order">И того: {{ this.getTotalCoast + "₽" }}</div>
+        </li>
+        <li><FeedbackForm /></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import CartItem from "./CartItem.vue";
 import { mapState, mapGetters } from "vuex";
+import FeedbackForm from "./FeedbackForm.vue";
 
 export default {
   components: {
     CartItem,
+    FeedbackForm,
   },
   computed: {
     ...mapState(["cartItems"]),
@@ -47,22 +49,32 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba($color: #000000, $alpha: 0.8);
-
+  overflow: hidden;
   position: fixed;
   z-index: 5;
+  overflow: hidden auto;
+}
+.cart__wrapper {
+  background-color: whitesmoke;
+  height: min-content;
+  padding: 10px;
+  margin: 80px 0;
+  display: flex;
+  width: min-content;
 }
 .cart-items {
   list-style: none;
-  padding: 80px 0 0 0;
-
+  padding: 0 0 0 0;
+  height: min-content;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .cart-order {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   color: #50966f;
   text-align: center;
   font-weight: bold;

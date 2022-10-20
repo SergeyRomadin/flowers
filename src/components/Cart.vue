@@ -1,7 +1,7 @@
 <template>
-  <div v-if="this.cartItems.length > 0" class="cart" @click.self="closeModal">
+  <div class="cart" @click.self="closeModal">
     <div class="cart__wrapper">
-      <ul class="cart-items">
+      <ul v-if="this.cartItems.length > 0" class="cart__items">
         <li v-for="item of this.cartItems">
           <CartItem
             :img="item.img"
@@ -14,8 +14,21 @@
         <li>
           <div class="cart-order">И того: {{ this.getTotalCoast + "₽" }}</div>
         </li>
-        <li><FeedbackForm /></li>
+        <li><FeedbackForm @formSubmit="this.orderSubmit" /></li>
       </ul>
+      <div v-else v-if="!submit" class="cart__items">
+        <h2>Корзина пуста!</h2>
+        <BasketMinus :size="280" class="basket-minus" />
+        <p>
+          Добавьте понравившиеся вам товары в корзину, для дальнейшего
+          оформления заказа
+        </p>
+      </div>
+      <div v-if="submit" class="cart__items">
+        <h2>Большое спасибо!</h2>
+        <BasketCheck :size="280" class="basket-minus" />
+        <p>Скоро мы с вами свяжемся...</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,11 +37,20 @@
 import CartItem from "./CartItem.vue";
 import { mapState, mapGetters } from "vuex";
 import FeedbackForm from "./FeedbackForm.vue";
+import BasketMinus from "vue-material-design-icons/BasketMinus";
+import BasketCheck from "vue-material-design-icons/BasketCheck";
 
 export default {
   components: {
     CartItem,
     FeedbackForm,
+    BasketMinus,
+    BasketCheck,
+  },
+  data() {
+    return {
+      submit: false,
+    };
   },
   computed: {
     ...mapState(["cartItems"]),
@@ -36,7 +58,11 @@ export default {
   },
   methods: {
     closeModal() {
+      this.submit = 1;
       return this.$emit("closeModal");
+    },
+    orderSubmit() {
+      this.submit = 1;
     },
   },
 };
@@ -62,7 +88,7 @@ export default {
   display: flex;
   width: min-content;
 }
-.cart-items {
+.cart__items {
   list-style: none;
   padding: 0 0 0 0;
   height: min-content;
@@ -71,6 +97,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  // .basket-minus {
+
+  // }
 }
 .cart-order {
   display: flex;

@@ -1,29 +1,37 @@
 <template>
   <div class="form">
-    <form method="POST" id="feedback-form">
+    <form
+      @submit.prevent="onSubmit"
+      action="http://localhost:3000/orders"
+      method="POST"
+      id="feedback-form"
+    >
       <h2>Заполните форму и мы с Вами свяжемся!</h2>
       <input
         class="input"
         type="text"
-        name="nameFF"
+        name="name"
         required
         placeholder="ФИО"
         x-autocompletetype="name"
+        v-model="name"
       />
       <input
         class="input"
-        type="email"
-        name="contactFF"
+        type="tel"
+        name="contact"
         required
-        placeholder="адрес электронной почты"
-        x-autocompletetype="email"
+        placeholder="+71234567890"
+        x-autocompletetype="tel"
+        v-model="contact"
       />
       <textarea
         class="input textarea"
-        name="messageFF"
+        name="message"
         placeholder="Укажите здесь ваши пожелания или дополнительную информацию"
         required
         rows="5"
+        v-model="message"
       ></textarea>
       <input class="input button" type="submit" value="отправить" />
     </form>
@@ -31,7 +39,38 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import { mapState, mapMutations } from "vuex";
+export default {
+  data() {
+    return {
+      name: "",
+      contact: "",
+      message: "",
+    };
+  },
+  computed: {
+    ...mapState(["cartItems"]),
+  },
+  methods: {
+    ...mapMutations(["resetCart"]),
+    onSubmit(event) {
+      let order = {
+        name: this.name,
+        telephone: this.contact,
+        contact: this.contact,
+        cart: this.cartItems,
+      };
+      this.name = null;
+      this.review = null;
+      this.rating = null;
+      this.resetCart();
+      axios.post("http://localhost:3000/orders", order);
+      this.$emit("formSubmit");
+      event.preventDefault();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,8 +1,7 @@
 <template>
   <div class="header">
-    <a>Главная</a>
     <a>Контакты</a>
-    <a>Телефон: +79998887766</a>
+    <a href="tel:+70713650543">Телефон: +79998887766</a>
     <a @click="showCartModal">Корзина{{ this.totalCoast }}</a>
   </div>
 </template>

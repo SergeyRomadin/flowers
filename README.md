@@ -1,5 +1,7 @@
 # flowers
 
+![Иллюстрация к поекту](https://github.com/SergeyRomadin/flowers/raw/master/FlowersTmpl.png)
+
 ## Project setup
 
 ```
@@ -9,7 +11,7 @@ npm install
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production

@@ -1,6 +1,6 @@
 <template>
   <ul class="product-items">
-    <li v-for="item of $store.state.itemsData">
+    <li v-for="item of this.itemsData">
       <ProductItem
         :img="item.img"
         :name="item.name"
@@ -13,8 +13,12 @@
 
 <script>
 import ProductItem from "./ProductItem.vue";
+import { mapState } from "vuex";
 
 export default {
+  computed: {
+    ...mapState(["itemsData"]),
+  },
   components: {
     ProductItem,
   },

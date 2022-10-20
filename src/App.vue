@@ -15,8 +15,14 @@ import ProductItems from "./components/ProductItems.vue";
 import Map from "./components/Map.vue";
 import Header from "./components/Header.vue";
 import Cart from "./components/Cart.vue";
-
+import { mapActions } from "vuex";
 export default {
+  methods: {
+    ...mapActions(["GET_ITEMS_DATA_FROM_API"]),
+  },
+  created() {
+    this.GET_ITEMS_DATA_FROM_API();
+  },
   data() {
     return {
       showModalCart: 0,

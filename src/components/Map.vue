@@ -1,5 +1,5 @@
 <template>
-  <div class="map">
+  <div class="map" id="map">
     <div class="map__yandex">
       <a
         href="https://yandex.ru/maps/142/donetsk/?utm_medium=mapframe&utm_source=maps"

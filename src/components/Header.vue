@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <a>Контакты</a>
+    <a href="#map">Контакты</a>
     <a href="tel:+70713650543">Телефон: +79998887766</a>
     <a @click="showCartModal">Корзина{{ this.totalCoast }}</a>
   </div>

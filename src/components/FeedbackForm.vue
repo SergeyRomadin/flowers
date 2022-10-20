@@ -57,13 +57,13 @@ export default {
     onSubmit(event) {
       let order = {
         name: this.name,
-        telephone: this.contact,
         contact: this.contact,
+        massage: this.message,
         cart: this.cartItems,
       };
-      this.name = null;
-      this.review = null;
-      this.rating = null;
+      this.name = "";
+      this.contact = "";
+      this.message = "";
       this.resetCart();
       axios.post("http://localhost:3000/orders", order);
       this.$emit("formSubmit");
